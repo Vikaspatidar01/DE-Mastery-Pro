@@ -1,0 +1,19 @@
+{
+  "name": "DE Mastery Pro \u2014 Data Engineering Academy",
+  "short_name": "DE Mastery",
+  "description": "Free, ad-free, offline-first Data Engineering learning in Hinglish",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#080f1d",
+  "theme_color": "#101a2c",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

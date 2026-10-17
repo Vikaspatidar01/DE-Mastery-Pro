@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#101a2c" />
+    <meta
+      name="description"
+      content="Free ad-free offline-first Data Engineering Academy in Hinglish — Zero to Hero roadmap 2026"
+    />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>DE Mastery Pro</title>
+  </head>
+  <body>
+    <header class="top">
+      <button class="brand" onclick="go('dashboard')">
+        <b class="logo">DE.</b
+        ><span
+          ><strong>DE MASTERY</strong
+          ><small>DATA ENGINEERING ACADEMY</small></span
+        >
+      </button>
+      <div>
+        <span id="status">● Ready to learn</span>
+        <button id="install" class="btn hidden">Install app</button
+        ><button class="btn secondary" onclick="toggleTheme()">◐</button>
+      </div>
+    </header>
+    <div class="shell">
+      <aside id="side">
+        <p class="kicker">YOUR WORKSPACE</p>
+        <button data-view="dashboard" class="nav active">⌂ Dashboard</button
+        ><button data-view="roadmap" class="nav">◫ 16-week roadmap</button
+        ><button data-view="learn" class="nav">▤ Learning library</button
+        ><button data-view="quiz" class="nav">✳ Quiz practice</button
+        ><button data-view="interview" class="nav">☷ Interview studio</button
+        ><button data-view="projects" class="nav">▣ Project lab</button
+        ><button data-view="notes" class="nav">✎ My notes</button
+        ><button data-view="settings" class="nav">⚙ Settings & backup</button>
+        <div class="free">
+          <b>✓ Free · Ad-free</b>
+          <p>No account or paid API. Progress stays on this device.</p>
+        </div>
+      </aside>
+      <main id="main"></main>
+    </div>
+    <nav id="mobile">
+      <button data-view="dashboard">⌂<small>Home</small></button
+      ><button data-view="roadmap">◫<small>Roadmap</small></button
+      ><button data-view="learn">▤<small>Learn</small></button
+      ><button data-view="quiz">✳<small>Quiz</small></button
+      ><button data-view="projects">▣<small>Projects</small></button>
+    </nav>
+    <div id="toast" class="toast hidden"></div>
+    <footer>DE MASTERY PRO · FREE, AD-FREE, LOCAL-FIRST LEARNING<br>Developed with ❤️ by Vikas</footer>
+    <script src="content.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
