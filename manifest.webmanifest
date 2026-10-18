@@ -1,19 +1,75 @@
 {
-  "name": "DE Mastery Pro \u2014 Data Engineering Academy",
+  "name": "DE Mastery Pro — Data Engineering Academy 2026",
   "short_name": "DE Mastery",
-  "description": "Free, ad-free, offline-first Data Engineering learning in Hinglish",
-  "start_url": "./",
+  "description": "Zero to Hero Data Engineering Academy — Interactive SQL Lab, 16-Week Roadmap, Deep PySpark, AWS, Airflow, dbt, Lakehouse, Quizzes & Interview Studio",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
   "background_color": "#080f1d",
-  "theme_color": "#101a2c",
+  "theme_color": "#080f1d",
+  "lang": "en",
+  "categories": ["education", "developer tools", "productivity"],
   "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
     {
       "src": "icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "16-Week Roadmap",
+      "short_name": "Roadmap",
+      "description": "View and track your 16-week study schedule",
+      "url": "./index.html#roadmap",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Interactive SQL Lab",
+      "short_name": "SQL Lab",
+      "description": "Practice SQL queries with real-time sandbox",
+      "url": "./index.html#sqllab",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Quiz & Mock Exam",
+      "short_name": "Quizzes",
+      "description": "Test your knowledge with 100+ questions",
+      "url": "./index.html#quiz",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Interview Studio",
+      "short_name": "Interview",
+      "description": "Technical & behavioral questions with model answers",
+      "url": "./index.html#interview",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
     }
   ]
 }

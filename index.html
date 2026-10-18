@@ -1,64 +1,186 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1,viewport-fit=cover"
-    />
-    <meta name="theme-color" content="#101a2c" />
-    <meta
-      name="description"
-      content="Free ad-free offline-first Data Engineering Academy in Hinglish — Zero to Hero roadmap 2026"
-    />
-    <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="icon" href="icon.svg" />
-    <link rel="stylesheet" href="styles.css" />
-    <title>DE Mastery Pro</title>
-  </head>
-  <body>
-    <header class="top">
-      <button class="brand" onclick="go('dashboard')">
-        <b class="logo">DE.</b
-        ><span
-          ><strong>DE MASTERY</strong
-          ><small>DATA ENGINEERING ACADEMY</small></span
-        >
-      </button>
-      <div>
-        <span id="status">● Ready to learn</span>
-        <button id="install" class="btn hidden">Install app</button
-        ><button class="btn secondary" onclick="toggleTheme()">◐</button>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#080f1d" />
+  <meta name="description" content="DE Mastery Pro — Zero to Hero Data Engineering Academy 2026. Interactive SQL Lab, Comprehensive 16-Week Roadmap, Deep PySpark, AWS, Airflow, dbt, Modern Lakehouse, Quizzes & Interview Studio" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="DE Mastery" />
+
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/svg+xml" href="icon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+
+  <title>DE Mastery Pro — Data Engineering Academy 2026</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- TOP APP HEADER -->
+  <header class="top-nav">
+    <button class="brand-btn" onclick="go('dashboard')" title="Go to Dashboard">
+      <div class="brand-logo-badge">DE.</div>
+      <div class="brand-info">
+        <strong class="brand-title">DE MASTERY</strong>
+        <small class="brand-sub">DATA ENGINEERING ACADEMY</small>
       </div>
-    </header>
-    <div class="shell">
-      <aside id="side">
-        <p class="kicker">YOUR WORKSPACE</p>
-        <button data-view="dashboard" class="nav active">⌂ Dashboard</button
-        ><button data-view="roadmap" class="nav">◫ 16-week roadmap</button
-        ><button data-view="learn" class="nav">▤ Learning library</button
-        ><button data-view="quiz" class="nav">✳ Quiz practice</button
-        ><button data-view="interview" class="nav">☷ Interview studio</button
-        ><button data-view="projects" class="nav">▣ Project lab</button
-        ><button data-view="notes" class="nav">✎ My notes</button
-        ><button data-view="settings" class="nav">⚙ Settings & backup</button>
-        <div class="free">
-          <b>✓ Free · Ad-free</b>
-          <p>No account or paid API. Progress stays on this device.</p>
-        </div>
-      </aside>
-      <main id="main"></main>
+    </button>
+
+    <!-- DEVELOPED WITH HEART BY VIKAS (ONLY IN TOP HEADER) -->
+    <div class="top-dev-credit">
+      <span class="top-dev-pill">Developed with <span class="heart-pulse">❤️</span> by <b>Vikas</b></span>
     </div>
-    <nav id="mobile">
-      <button data-view="dashboard">⌂<small>Home</small></button
-      ><button data-view="roadmap">◫<small>Roadmap</small></button
-      ><button data-view="learn">▤<small>Learn</small></button
-      ><button data-view="quiz">✳<small>Quiz</small></button
-      ><button data-view="projects">▣<small>Projects</small></button>
-    </nav>
-    <div id="toast" class="toast hidden"></div>
-    <footer>DE MASTERY PRO · FREE, AD-FREE, LOCAL-FIRST LEARNING<br>Developed with ❤️ by Vikas</footer>
-    <script src="content.js"></script>
-    <script src="app.js"></script>
-  </body>
+
+    <div class="top-actions">
+      <div id="streakPill" class="streak-pill" title="Consecutive daily learning streak">
+        🔥 <span id="streakCount">1</span><span class="streak-label"> Day</span>
+      </div>
+      <span id="networkStatus" class="status-badge">● Ready to learn</span>
+      <button id="installBtn" class="btn btn-sm btn-install" onclick="showInstallModal()">
+        📥 <span class="install-text">Install App</span>
+      </button>
+      <button class="btn btn-icon btn-secondary" onclick="toggleTheme()" title="Toggle Dark/Light theme">
+        ◐
+      </button>
+    </div>
+  </header>
+
+  <!-- APP SHELL -->
+  <div class="app-shell">
+    <!-- DESKTOP SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-kicker">YOUR WORKSPACE</div>
+      <button data-view="dashboard" class="nav-item active">
+        <span class="nav-icon">⌂</span> Dashboard
+      </button>
+      <button data-view="roadmap" class="nav-item">
+        <span class="nav-icon">◫</span> 16-Week Roadmap
+        <span class="sidebar-badge" id="roadmapBadge">0/16</span>
+      </button>
+      <button data-view="learn" class="nav-item">
+        <span class="nav-icon">▤</span> Learning Library
+        <span class="sidebar-badge" id="lessonsBadge">0/50</span>
+      </button>
+      <button data-view="sqllab" class="nav-item">
+        <span class="nav-icon">⚡</span> SQL Practice Lab
+        <span class="tag tag-emerald" style="margin-left:auto;font-size:9px">Interactive</span>
+      </button>
+      <button data-view="quiz" class="nav-item">
+        <span class="nav-icon">✳</span> Quiz & Mock Exam
+        <span class="sidebar-badge" id="quizBadge">0%</span>
+      </button>
+      <button data-view="architecture" class="nav-item">
+        <span class="nav-icon">◈</span> Architecture Studio
+      </button>
+      <button data-view="interview" class="nav-item">
+        <span class="nav-icon">☷</span> Interview Studio
+      </button>
+      <button data-view="projects" class="nav-item">
+        <span class="nav-icon">▣</span> Project Lab
+        <span class="sidebar-badge">5 Blueprints</span>
+      </button>
+      <button data-view="career" class="nav-item">
+        <span class="nav-icon">📄</span> Resume & Career Kit
+      </button>
+      <button data-view="notes" class="nav-item">
+        <span class="nav-icon">✎</span> My Notes
+      </button>
+      <button data-view="settings" class="nav-item">
+        <span class="nav-icon">⚙</span> Settings & PWA
+      </button>
+
+      <div class="sidebar-footer">
+        <div class="offline-callout">
+          <b>✓ Free · Ad-free</b>
+          <p>No account or paid API. All your progress stays on this device.</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN VIEW CONTAINER WITH CLEAN FOOTER -->
+    <div class="main-viewport-wrapper">
+      <main id="main" class="main-content" tabindex="-1"></main>
+      <footer class="app-global-footer">
+        <div class="footer-title">DE MASTERY PRO · FREE, AD-FREE, 100% LOCAL-FIRST LEARNING</div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- MOBILE BOTTOM NAVIGATION -->
+  <nav class="mobile-nav-bar">
+    <button data-view="dashboard" class="mobile-nav-btn active">
+      <span>⌂</span>
+      <small>Home</small>
+    </button>
+    <button data-view="roadmap" class="mobile-nav-btn">
+      <span>◫</span>
+      <small>Roadmap</small>
+    </button>
+    <button data-view="learn" class="mobile-nav-btn">
+      <span>▤</span>
+      <small>Learn</small>
+    </button>
+    <button data-view="sqllab" class="mobile-nav-btn">
+      <span>⚡</span>
+      <small>SQL Lab</small>
+    </button>
+    <button data-view="quiz" class="mobile-nav-btn">
+      <span>✳</span>
+      <small>Quiz</small>
+    </button>
+    <button data-view="settings" class="mobile-nav-btn">
+      <span>☰</span>
+      <small>More</small>
+    </button>
+  </nav>
+
+  <!-- INSTALLATION GUIDE MODAL -->
+  <div id="installModal" class="modal-overlay hidden" onclick="if(event.target===this)closeInstallModal()">
+    <div class="modal-window">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+        <h2 style="font-size:20px;font-weight:800;color:var(--text-primary)">📱 Install DE Mastery Pro</h2>
+        <button class="btn btn-sm btn-secondary" onclick="closeInstallModal()">✕</button>
+      </div>
+      <p style="color:var(--text-secondary);font-size:13.5px;margin-bottom:20px">
+        DE Mastery Pro is a Progressive Web App (PWA). You can install it on your <b>Laptop (Windows/Mac)</b> and <b>Mobile Phone (Android/iOS)</b> to use it offline anytime like a native desktop/mobile app!
+      </p>
+
+      <div class="callout-box" style="margin-bottom:20px">
+        <b>💻 On Laptop (Chrome or Microsoft Edge):</b>
+        <p style="margin-top:6px">1. Look at your browser's address bar (top-right next to URL/bookmark star).<br>
+        2. Click the <b>'Install app'</b> icon (looks like a monitor with down arrow) or click the <b>Install App</b> button below.<br>
+        3. Click <b>Install</b>. The app will open in its own clean window with a desktop shortcut!</p>
+      </div>
+
+      <div class="callout-box" style="margin-bottom:20px">
+        <b>📱 On Android (Chrome):</b>
+        <p style="margin-top:6px">1. Open the app in Chrome.<br>
+        2. Tap the 3 dots menu (⋮) in the top right.<br>
+        3. Tap <b>'Install app'</b> or <b>'Add to Home screen'</b>.</p>
+      </div>
+
+      <div class="callout-box" style="margin-bottom:20px">
+        <b>🍏 On iPhone / iPad (Safari):</b>
+        <p style="margin-top:6px">1. Open this page in Safari.<br>
+        2. Tap the <b>Share</b> button (square with arrow pointing up).<br>
+        3. Scroll down and tap <b>'Add to Home Screen'</b>.</p>
+      </div>
+
+      <div style="display:flex;gap:10px;justify-content:flex-end">
+        <button id="directInstallBtn" class="btn btn-primary" onclick="triggerPWAInstall()">Direct Install Now</button>
+        <button class="btn btn-secondary" onclick="closeInstallModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- CORE SCRIPTS -->
+  <script src="content.js"></script>
+  <script src="sql-engine.js"></script>
+  <script src="app.js"></script>
+</body>
 </html>
